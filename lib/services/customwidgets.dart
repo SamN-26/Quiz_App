@@ -17,8 +17,10 @@ Widget difficulty()
 Widget category()
 {
   List<String> category = ['General Knowledge' , 'History' , 'Politics' , 'Sports' , 'Geography'];
-  //DropMenu Category = DropMenu(category , 'Category');
-  return Drop_Menu( category , "Category" );
+  //Drop_Menu Category = Drop_Menu(category , 'Category' );
+  //print(Category.index);
+  return Drop_Menu(category, 'Category');
+
 }
 
 Widget textWidget(String value)
@@ -32,7 +34,6 @@ Widget textWidget(String value)
     ),
   );
 }
-
 
 
 PreferredSizeWidget? customAppbar(String value)

@@ -10,11 +10,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  TextEditingController numberOfQues = new TextEditingController();
   String? str;
 
   @override
   Widget build(BuildContext context) {
+    final myController = TextEditingController();
     return Scaffold(
       backgroundColor: Color(0xFF2C74B3),
       appBar: customAppbar('Quiz App'),
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
             textWidget("Number Of Questions"),
             TextField(
                 keyboardType: TextInputType.number,
-                controller: numberOfQues,
+                controller: myController,
                 style: TextStyle(
                   color: Colors.white60,
                   fontSize: 15,
@@ -50,7 +50,11 @@ class _HomeState extends State<Home> {
             SizedBox(height: 30,),
             ElevatedButton(
                 onPressed: () {
-
+                  Navigator.pushNamed(context , '/loading', arguments:{
+                    'numberOfQues' : myController.text,
+                    'category' :
+                  });
+                  myController.dispose();
                 },
                 child: textWidget('Ok'),
                 style: ElevatedButton.styleFrom(

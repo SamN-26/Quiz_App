@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/services/Options.dart';
 import 'package:quiz_app/services/User_Input.dart';
 import 'package:quiz_app/services/customwidgets.dart';
+import 'dart:math';
 
 class QuestionsPageMultiple extends StatefulWidget {
 
@@ -24,30 +26,27 @@ class _QuestionsPageMultipleState extends State<QuestionsPageMultiple> {
       appBar: customAppbar('Question ' + (widget.number+1).toString()),
       backgroundColor: Color(0xFF2C74B3),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-        child: Column(
-              children: [
-                     Container(
-                      child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: textWidget(widget.question),
-                      ),
-                      decoration: BoxDecoration(
-                      border: Border.all(
-                      color: Color(0xFF0A2647),
-                      width: 3,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      ),
-                ),
-                Row(
-                  children: [
-
-                  ],
-                )
-              ],
-            ),
-      ),
+        padding: const EdgeInsets.fromLTRB(50, 40, 50, 0),
+        child:  Column(
+                children: [
+                       Container(
+                        child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: textWidget(widget.question),
+                        ),
+                        decoration: BoxDecoration(
+                        border: Border.all(
+                        color: Color(0xFF0A2647),
+                        width: 3,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                  ),
+                  SizedBox(height: 30,),
+                  OptionsBuilder(options: widget.options),
+                ],
+              ),
+        ),
     );
   }
 }
