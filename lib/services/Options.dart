@@ -60,6 +60,13 @@ class _OptionsBuilderState extends State<OptionsBuilder> {
       child: Row(
         children: [
           Radio(
+            fillColor:  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled)) {
+                return Color(0xFF0A2647);
+              }
+              return Color(0xFF0A2647);
+            }),
+            hoverColor: Color(0xFF0A2647),
               value: option,
               groupValue: widget.chosen,
               onChanged: (String? value)
