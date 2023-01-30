@@ -8,8 +8,9 @@ class Drop_Menu extends StatefulWidget {
   List<String> list;
   String value;
   int index =0;
+  var callback;
 
-  Drop_Menu( this.list , this.value  );
+  Drop_Menu(this.list , this.value, this.callback);
 
   @override
   State<Drop_Menu> createState() => _Drop_MenuState();
@@ -20,7 +21,7 @@ class _Drop_MenuState extends State<Drop_Menu> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        elevatedButtonWidget(widget.value, context),
+        elevatedButtonDropDown(widget.value, context),
         textWidget(widget.list[widget.index]),
       ],
     );
@@ -47,12 +48,13 @@ class _Drop_MenuState extends State<Drop_Menu> {
           setState(() {
             widget.index = index;
           });
+          widget.callback(index);
         },
       ),
     );
   }
 
-  Widget elevatedButtonWidget(String value, BuildContext context) {
+  Widget elevatedButtonDropDown(String value, BuildContext context) {
     return ElevatedButton(
       onPressed: () {
         showCupertinoModalPopup(context: context,

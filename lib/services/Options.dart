@@ -9,8 +9,8 @@ class OptionsBuilder extends StatefulWidget {
 
   List<String> options;
   String? chosen;
-
-  OptionsBuilder({ required this.options});
+  var callback;
+  OptionsBuilder({ required this.options , required this.callback});
 
   @override
   State<OptionsBuilder> createState() => _OptionsBuilderState();
@@ -19,7 +19,6 @@ class OptionsBuilder extends StatefulWidget {
 class _OptionsBuilderState extends State<OptionsBuilder> {
   @override
   Widget build(BuildContext context) {
-    print(widget.options);
     return Column(
       children: [
             _optionsBuilder(widget.options[0]),
@@ -48,9 +47,23 @@ class _OptionsBuilderState extends State<OptionsBuilder> {
                   setState(() {
                     widget.chosen = value;
                   });
+                  int index = -1 ;
+                  for(int i =0 ; i<widget.options.length; i++)
+                    {
+                      if(widget.options[i] == value)
+                        {
+                          index = i;
+                          break;
+                        }
+                    }
+                  //print(index);
+                  if(index == -1)
+                    print("not found");
+                  else
+                    widget.callback(index);
               }
           ),
-          textWidget(option),
+          Expanded(child: textWidget(option)),
         ],
       ),
       decoration: BoxDecoration(

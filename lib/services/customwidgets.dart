@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/services/Drop_Menu.dart';
 
-Widget type()
-{
-  List<String> type = ['Multiple Choice' , 'True/False'];
-  return Drop_Menu(type, 'Type');
-}
-
-Widget difficulty()
-{
-  List<String> diff = ['Easy' , 'Medium' , 'Hard' ];
-  return
-    Drop_Menu(diff , 'Difficulty');
-}
-
-Widget category()
-{
-  List<String> category = ['General Knowledge' , 'History' , 'Politics' , 'Sports' , 'Geography'];
-  //Drop_Menu Category = Drop_Menu(category , 'Category' );
-  //print(Category.index);
-  return Drop_Menu(category, 'Category');
-
-}
-
 Widget textWidget(String value)
 {
   return Text(
@@ -35,6 +13,17 @@ Widget textWidget(String value)
   );
 }
 
+Widget elevevatedButtonCustom(String value , Function? function())
+{
+  return  ElevatedButton(
+      onPressed: function ,
+      child: textWidget(value),
+      style: ElevatedButton.styleFrom(
+      backgroundColor: Color(0xFF205295),
+      ),
+
+  );
+}
 
 PreferredSizeWidget? customAppbar(String value)
 {
@@ -56,5 +45,6 @@ PreferredSizeWidget? customAppbar(String value)
       ),
     ),
     elevation: 0,
+    automaticallyImplyLeading: false,
   );
 }
