@@ -3,14 +3,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/services/customwidgets.dart';
+import 'package:quiz_app/screens/ErrorPage.dart';
 
 
 class OptionsBuilder extends StatefulWidget {
 
   List<String> options;
   String? chosen;
+  String type;
   var callback;
-  OptionsBuilder({ required this.options , required this.callback});
+  OptionsBuilder({ required this.options , required this.callback , required this.type});
 
   @override
   State<OptionsBuilder> createState() => _OptionsBuilderState();
@@ -19,20 +21,38 @@ class OptionsBuilder extends StatefulWidget {
 class _OptionsBuilderState extends State<OptionsBuilder> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-            _optionsBuilder(widget.options[0]),
-             SizedBox(
-               height: 20,
-             ),
-             _optionsBuilder(widget.options[1]),
-            SizedBox(height: 20,),
-             _optionsBuilder(widget.options[2]),
-            SizedBox(height: 20,),
-             _optionsBuilder(widget.options[3]),
-            SizedBox(height: 30,),
-      ],
-    );
+    if(widget.type == 'multiple') {
+      return Column(
+        children: [
+          _optionsBuilder(widget.options[0]),
+          SizedBox(
+            height: 20,
+          ),
+          _optionsBuilder(widget.options[1]),
+          SizedBox(height: 20,),
+          _optionsBuilder(widget.options[2]),
+          SizedBox(height: 20,),
+          _optionsBuilder(widget.options[3]),
+          SizedBox(height: 30,),
+
+        ],
+      );
+    }
+    else if(widget.type == 'boolean')
+    {
+      return Column(
+        children: [
+          _optionsBuilder(widget.options[0]),
+          SizedBox(
+            height: 20,
+          ),
+          _optionsBuilder(widget.options[1]),
+          SizedBox(height: 20,),
+        ],
+      );
+    }
+    else
+      return ErrorPage();
   }
 
   Widget _optionsBuilder(String option) {

@@ -15,10 +15,12 @@ class QuestionsPageMultiple extends StatefulWidget {
   int index;
   Map data;
   int numberOfQuestions;
+  String type;
 
   @override
 
-   QuestionsPageMultiple({ required this.question , required this.incorrect_answers , required this.correct_answer , required this.index , required this.data , required this.numberOfQuestions });
+   QuestionsPageMultiple({ required this.question , required this.incorrect_answers ,
+    required this.correct_answer , required this.index , required this.data , required this.numberOfQuestions , required this.type});
 
   State<QuestionsPageMultiple> createState() => _QuestionsPageMultipleState();
 }
@@ -51,7 +53,7 @@ class _QuestionsPageMultipleState extends State<QuestionsPageMultiple> {
                           ),
                     ),
                     SizedBox(height: 30,),
-                    OptionsBuilder(options: widget.incorrect_answers , callback: (int index) => {indexChoice = index}),
+                    OptionsBuilder(options: widget.incorrect_answers , callback: (int index) => {indexChoice = index} , type : widget.type),
                     elevevatedButtonCustom("Next", () {
                           if(widget.correct_answer == widget.incorrect_answers[indexChoice])
                               instance.answers.add(true);

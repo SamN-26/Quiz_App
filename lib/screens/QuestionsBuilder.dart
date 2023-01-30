@@ -16,11 +16,13 @@ class QuestionBuilder extends StatelessWidget {
     String question = _data[this.index]['question'];
     List<String> incorrect_answers = List<String>.from(_data[this.index]['incorrect_answers']);
     String correct_answer = _data[this.index]['correct_answer'];
+    String type = _data[this.index]['type'];
     print(question);
     print(incorrect_answers);
     print(correct_answer);
     incorrect_answers.add(correct_answer);
 
-    return QuestionsPageMultiple(question: question , incorrect_answers: incorrect_answers, correct_answer: correct_answer , index: index , data: data, numberOfQuestions: data['numberOfQues'],);
+    return QuestionsPageMultiple(question: question , incorrect_answers: incorrect_answers, correct_answer: correct_answer , index: index ,
+            data: data, numberOfQuestions: data['numberOfQues'],type: type,);
   }
 }
